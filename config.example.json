@@ -1,0 +1,10 @@
+{
+    "client_id": "client_id",
+    "client_secret": "client_secret",
+    "redirect_uri": "redirect_uri",
+    "db_host": "db_host",
+    "db_user": "db_user",
+    "db_pass": "db_pass",
+    "db_database": "spotify_info",
+    "rickroll": false
+}

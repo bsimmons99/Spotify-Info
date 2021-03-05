@@ -1,0 +1,94 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* background-color: brown; */
+}
+
+.widget {
+    /* background-image: linear-gradient(90deg, #505050 75%, rgba(80 , 80, 80, 0)); */
+    /* background-image: linear-gradient(90deg, rgba(255, 105, 180, 1) 75%, rgba(255, 105, 180, 0)); */
+    background-image: linear-gradient(90deg, #E993E2 75%, rgba(0, 0, 0, 0));
+    height: 310px;
+    color: white;
+    overflow: hidden;
+}
+
+.cover-container {
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+#cover-slide {
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    transition: top 1s;
+    transition-timing-function: linear;
+}
+
+.cover-content {
+    height: 300px;
+    width: 300px;
+    display: block;
+}
+
+.art-box {
+    position: relative;
+    /* height: 310px; */
+    height: 100%;
+    width: 300px;
+    float: left;
+    padding-right: 10px;
+}
+
+#progressbar {
+    position: absolute;
+    bottom: 0px;
+    height: 10px;
+    width: 300px;
+    background-color: coral;
+    /* background-color: rgba(255, 105, 180, 1); */
+}
+
+#progress {
+    height: 100%;
+    width: 0%;
+    background-color: chartreuse;
+    transition: width 2s;
+    transition-timing-function: linear;
+}
+
+.info-container {
+    height: 310px;
+    position: relative;
+    overflow: hidden;
+}
+
+#info-slide {
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    transition: top 1s;
+    transition-timing-function: linear;
+}
+
+.info-content {
+    height: 310px;
+}
+
+p {
+    margin: 0px;
+    padding-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.title {
+    font-size: 7em;
+}
+
+.artist {
+    font-size: 5em;
+}
