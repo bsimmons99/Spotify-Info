@@ -49,7 +49,7 @@ const sessionStore = new MySQLStore({
 
 //Add session data to request
 app.use(session({
-    secret: 'PH14Mz/XJ0EY7Xr4dcVSIA',
+    secret: configs.session_secret,
     store: sessionStore,
     resave: false,
     saveUninitialized: true,
