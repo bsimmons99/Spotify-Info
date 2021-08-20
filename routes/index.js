@@ -282,8 +282,13 @@ async function newAuth(id, con) {
 
 router.put('/saveSettings', async function(req, res) {
     // console.log(req.body);
-    if ('backgroundColour' in req.body) {
-        await req.pool.query('UPDATE User SET background_colour = ?, text_colour = ?, settings_updated = CURRENT_TIMESTAMP() WHERE id = ?;', [req.body.backgroundColour.slice(1,8), req.body.textColour.slice(1,8), req.session.spot_id]);
+    if ('backgroundColour' in req.body && 'textColour' in req.body) {
+        let bg = req.body.backgroundColour.slice(1,9);
+        let fg = req.body.textColour.slice(1,9);
+        fg += fg.length < 8 ? '0' : '';
+        bg += bg.length < 8 ? '0' : '';
+        console.log(fg, bg);
+        await req.pool.query('UPDATE User SET background_colour = ?, text_colour = ?, settings_updated = CURRENT_TIMESTAMP() WHERE id = ?;', [bg, fg, req.session.spot_id]);
     }
     res.sendStatus(204);
 });

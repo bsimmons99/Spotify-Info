@@ -3,19 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 05, 2021 at 11:31 AM
--- Server version: 10.3.25-MariaDB-0ubuntu0.20.04.1
+-- Generation Time: Aug 20, 2021 at 06:00 PM
+-- Server version: 10.3.31-MariaDB-0ubuntu0.20.04.1
 -- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `spotify_info`
@@ -51,9 +45,10 @@ CREATE TABLE `User` (
   `refresh` varchar(255) NOT NULL COMMENT 'Spotify refresh token',
   `issued` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'Time of access token issue',
   `expiry` int(11) NOT NULL COMMENT 'Access token validity period',
-  `background_colour` char(6) NOT NULL DEFAULT '505050' COMMENT 'Background colour for widget',
-  `text_colour` char(6) NOT NULL DEFAULT 'ffffff' COMMENT 'Text colour for widget',
-  `settings_updated` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'Widget settings last updated'
+  `background_colour` char(8) NOT NULL DEFAULT '191414ff' COMMENT 'Background colour for widget',
+  `text_colour` char(8) NOT NULL DEFAULT '1db954ff' COMMENT 'Text colour for widget',
+  `settings_updated` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'Widget settings last updated',
+  `enable_rickroll` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'If Rickroll is currently displayed for the user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -73,7 +68,3 @@ ALTER TABLE `User`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `auth` (`auth`);
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

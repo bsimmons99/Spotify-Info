@@ -7,7 +7,7 @@ body {
 .widget {
     /* background-image: linear-gradient(90deg, #505050 75%, rgba(80 , 80, 80, 0)); */
     /* background-image: linear-gradient(90deg, rgba(255, 105, 180, 1) 75%, rgba(255, 105, 180, 0)); */
-    background-image: linear-gradient(90deg, #E993E2 75%, rgba(0, 0, 0, 0));
+    background-image: linear-gradient(90deg, #E993E2FF 75%, rgba(0, 0, 0, 0));
     height: 310px;
     color: white;
     overflow: hidden;

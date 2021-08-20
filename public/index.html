@@ -5,15 +5,21 @@
   <title>Spotify Playing Setup</title>
   <link rel="stylesheet" href="/stylesheets/home.css">
   <script src="/javascripts/home.js" defer></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono&display=swap" rel="stylesheet">
 </head>
 
 <body onload="init()">
   <p>Create a new Browser Source and point it to <b>https://spotify.bryces.network/obs?auth=<span id='authKey'>[KEY]</span></b></p>
   <p>Set the Width to 1920 and the Height to 310 (Width can be longer or shorter, will auto crop long songs!)</p>
-  <p>Auth Key: <span id='authKey2'>[KEY]</span> <button onclick="updateAuthKey('/revokeauth')">Revoke (Will logout OBS)</button></p>
+  <p>Auth Key: <span class="mono" id="authKey2">[KEY]</span> <button onclick="updateAuthKey('/revokeauth')">Revoke (Will logout OBS)</button></p>
   <hr>
   <label for="backgroundColourPicker">Background Colour: </label><input id="backgroundColourPicker" type="color"><br>
+  <label for="backgroundOpacityPicker">Background Opacity: </label><input id="backgroundOpacityPicker" type="number" min="0" max="100" value="100" oninput="validateOpacity(this)">%<br>
   <label for="textColourPicker">Text Colour: </label><input id="textColourPicker" type="color"><br>
+  <label for="textOpacityPicker">Text Opacity: </label><input id="textOpacityPicker" type="number" min="0" max="100" value="100" oninput="validateOpacity(this)">% <button onclick="swapColours()">Swap</button><br>
   <button onclick="saveSettings()">Save!</button>
 </body>
 

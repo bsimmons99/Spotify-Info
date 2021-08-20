@@ -10,10 +10,37 @@ async function updateAuthKey(path) {
     document.getElementById('authKey2').innerText = data;
 }
 
+function swapColours() {
+    let fgcp = document.getElementById('textColourPicker');
+    let bgcp = document.getElementById('backgroundColourPicker');
+    let fbc = fgcp.value;
+    fgcp.value = bgcp.value;
+    bgcp.value = fbc;
+
+    let fgop = document.getElementById('textOpacityPicker');
+    let bgop = document.getElementById('backgroundOpacityPicker');
+    let fbo = fgop.value;
+    fgop.value = bgop.value;
+    bgop.value = fbo;
+}
+
+function validateOpacity(field) {
+    field.value = Math.max(Math.min(field.value, 100), 0);
+}
+
 async function saveSettings() {
     let data = {};
     data.backgroundColour = document.getElementById('backgroundColourPicker').value;
     data.textColour = document.getElementById('textColourPicker').value;
+
+    data.backgroundColour += Math.round(document.getElementById('backgroundOpacityPicker').value/100*255).toString(16);
+    data.textColour += Math.round(document.getElementById('textOpacityPicker').value/100*255).toString(16);
+
+    console.log(data.textColour, data.backgroundColour);
+
+    data.backgroundColour += data.backgroundColour.length < 9 ? '0' : '';
+    data.textColour += data.textColour.length < 9 ? '0' : '';
+
     await fetch('/saveSettings', {
         method: 'PUT',
         headers: {
@@ -25,8 +52,10 @@ async function saveSettings() {
 
 async function getSettings() {
     settings = await (await fetch('/getSettings')).json();
-    document.getElementById('backgroundColourPicker').value = '#' + settings.backgroundColour;
-    document.getElementById('textColourPicker').value = '#' + settings.textColour;
+    document.getElementById('backgroundColourPicker').value = '#' + settings.backgroundColour.slice(0,6);
+    document.getElementById('textColourPicker').value = '#' + settings.textColour.slice(0,6);
+    document.getElementById('backgroundOpacityPicker').value = Math.round(parseInt(settings.backgroundColour.slice(6,8), 16)/255*100);
+    document.getElementById('textOpacityPicker').value = Math.round(parseInt(settings.textColour.slice(6,8), 16)/255*100);
 }
 
 function init() {

@@ -15,7 +15,7 @@
     "mariadb": "^2.5.3",
     "morgan": "~1.9.1",
     "mysql": "^2.18.1",
-    "nodemon": "^2.0.7",
+    "nodemon": "^2.0.12",
     "server-timing": "^3.3.1"
   }
 }
