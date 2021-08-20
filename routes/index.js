@@ -127,7 +127,7 @@ router.get('/query', async function (req, res) {
 
 router.get('/nowplaying', async function (req, res) {
     let data = await queryAPI('/me/player/currently-playing', req.session.spot_id, req.pool);
-    let settings = (await req.pool.query('SELECT settings_updated AS updated FROM User WHERE id = ?;', req.session.spot_id))[0];
+    let settings = (await req.pool.query('SELECT settings_updated AS updated, enable_rickroll AS rickroll FROM User WHERE id = ?;', req.session.spot_id))[0];
     if ('error' in data) {
         res.json(data);
     } else {
@@ -146,7 +146,7 @@ router.get('/nowplaying', async function (req, res) {
             ret.artists += element.name + ', ';
         });
         ret.artists = ret.artists.slice(0, ret.artists.length-2);
-        if (configs.rickroll) {
+        if (settings.rickroll) {
             ret.id = '4uLU6hMCjMI75M1A2tKUQC';
             ret.title = 'Never Gonna Give You Up';
             ret.artists = 'Rick Astley';

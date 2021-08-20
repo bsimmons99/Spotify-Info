@@ -6,6 +6,5 @@
     "db_user": "db_user",
     "db_pass": "db_pass",
     "db_database": "spotify_info",
-    "session_secret": "session_secret",
-    "rickroll": false
+    "session_secret": "session_secret"
 }
